@@ -1,23 +1,24 @@
-import React, { Component } from 'react'
+import { useState, useEffect } from 'react';
 
-export class TodoMain extends Component {
- constructor(props: any) {
-  super(props)
-  this.state = {
+export default function TodoMain() {
+ const [users, setUsers] = useState([]) as any;
+ console.table(users);
 
-  }
- }
-
- render() {
-  fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
+ useEffect(() => {
+  fetch("https://jsonplaceholder.typicode.com/todos/")
    .then((response) => response.json())
-   .then((json) => console.log(json));
-  return (
-   <div>
+   .then((data) => setUsers(data));
+ }, [])
 
-   </div>
-  )
- }
+ return (
+  <div>
+   {users.map((d: any, index: any) =>
+    <div>
+     <label htmlFor={index} key={index}> <input type="checkbox" name={index}  checked={d.completed}/> {d.title} </label>
+     <br />
+     <br />
+    </div>
+   )}
+  </div>
+ )
 }
-
-export default TodoMain

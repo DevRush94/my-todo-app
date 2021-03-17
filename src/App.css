@@ -1,4 +1,4 @@
-body{background-color:#235852}
+body{background-color:#235852;color: #fff;}
 .AppWrapper{background-color:#393939;width:500px;max-width:90%;margin:15px auto}
 .header{height:50px;line-height:50px;color:#fff;background-color:#292929;text-align:center;box-shadow:0 0 5px -1px #000;transition:.5s all ease-in-out}
 .header:hover{box-shadow:0 0 0 0 #000}
