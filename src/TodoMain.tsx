@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 
-class TodoMain extends Component {
- constructor(props) {
+export class TodoMain extends Component {
+ constructor(props: any) {
   super(props)
-
   this.state = {
 
   }
  }
 
  render() {
-
   fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
    .then((response) => response.json())
    .then((json) => console.log(json));
@@ -23,4 +21,3 @@ class TodoMain extends Component {
 }
 
 export default TodoMain
-
