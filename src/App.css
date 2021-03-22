@@ -1,4 +1,7 @@
-body{background-color:#235852;color: #fff;}
-.AppWrapper{background-color:#393939;width:500px;max-width:90%;margin:15px auto}
-.header{height:50px;line-height:50px;color:#fff;background-color:#292929;text-align:center;box-shadow:0 0 5px -1px #000;transition:.5s all ease-in-out}
+body{background-color:#235852;color:#fff}
+.AppWrapper{background-color:#393939;width:500px;max-width:90%;margin:30px auto}
+.header{height:50px;line-height:50px;color:#fff;background-color:#292929;text-align:center;box-shadow:0 0 5px -1px #000;transition:.5s all ease-in-out;position:sticky;top:0;width:100%}
 .header:hover{box-shadow:0 0 0 0 #000}
+.form-list{padding:10px}
+.form-list label{display:block;margin:10px 0}
+.form-list input{margin:0;margin-right:5px}

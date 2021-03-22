@@ -1,24 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
+import TodoList from './Components/TodoList'
+import TodoForm from './Components/TodoForm'
 
 export default function TodoMain() {
- const [users, setUsers] = useState([]) as any;
- console.table(users);
-
- useEffect(() => {
-  fetch("https://jsonplaceholder.typicode.com/todos/")
-   .then((response) => response.json())
-   .then((data) => setUsers(data));
- }, [])
-
- return (
-  <div>
-   {users.map((d: any, index: any) =>
-    <div>
-     <label htmlFor={index} key={index}> <input type="checkbox" name={index}  checked={d.completed}/> {d.title} </label>
-     <br />
-     <br />
-    </div>
-   )}
-  </div>
- )
+  const [todos, settodos] = useState([]) as any;
+  const addNewTodo = (newTodo: any) => {
+    settodos([...todos, { id: 32423, title: newTodo, completed: false }])
+  }
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos/")
+      .then((response) => response.json())
+      .then((InitialTodo) => settodos(InitialTodo));
+  }, [])
+  return (
+    <>
+      <TodoForm addNewTodo={addNewTodo} />
+      <TodoList todos={todos} />
+    </>
+  )
 }
