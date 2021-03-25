@@ -5,7 +5,15 @@ import TodoForm from './Components/TodoForm'
 export default function TodoMain() {
   const [todos, settodos] = useState([]) as any;
   const addNewTodo = (newTodo: any) => {
-    settodos([...todos, { id: 32423, title: newTodo, completed: false }])
+    settodos([...todos, { id: todos.length + 1, title: newTodo, completed: false }])
+  }
+  const ToggleTodo = (todoID: any) => {
+    console.log('ToggleTodo', todoID);
+
+    const UpdateTodo = todos.map((todo: any) =>
+      todo.id === todoID ? { ...todo, completed: !todo.completed } : todo
+    )
+    settodos(UpdateTodo);
   }
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos/")
@@ -15,7 +23,7 @@ export default function TodoMain() {
   return (
     <>
       <TodoForm addNewTodo={addNewTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} ToggleTodo={ToggleTodo} />
     </>
   )
 }
