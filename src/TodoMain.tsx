@@ -5,7 +5,7 @@ import TodoForm from './Components/TodoForm'
 export default function TodoMain() {
   const [todos, settodos] = useState([]) as any;
   const addNewTodo = (newTodo: any) => {
-    settodos([...todos, { id: todos[todos.length - 1].id + 1, title: newTodo, completed: false }])
+    settodos([...todos, { id: todos.length > 0 ? todos[todos.length - 1]?.id + 1 : 1, title: newTodo, completed: false }])
   }
   const ToggleTodo = (todoID: any) => {
     console.log('Toggle', todoID);
