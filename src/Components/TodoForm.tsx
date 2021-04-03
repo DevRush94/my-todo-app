@@ -7,7 +7,7 @@ export default function TodoForm({ addNewTodo }: cardProp) {
  return (
   <>
    <form onSubmit={e => { e.preventDefault(); addNewTodo(value); reset(); }}>
-    <input value={value} onChange={handlechange} />
+    <input value={value} onChange={handlechange} required />
    </form>
   </>
  )

@@ -6,10 +6,13 @@ function TodoList(props: any) {
   if (value === "") {
    value = newValue;
   }
+  function formSubmit(e: any) {
+   e.preventDefault(); props.EditVal(newId, value); reset();
+  }
   // value === "" ? value = newValue : "";
   return <>
-   <form onSubmit={e => { e.preventDefault(); props.EditVal(newId, value); reset(); }}>
-    <input type="text" name={value} id={newId} value={value} onChange={handlechange} />
+   <form onSubmit={e => formSubmit(e)}>
+    <input type="text" name={value} id={newId} value={value} onChange={handlechange} autoFocus={true} onBlur={e => formSubmit(e)} required />
    </form>
   </>
  }
