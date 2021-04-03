@@ -5,7 +5,7 @@ import TodoForm from './Components/TodoForm'
 export default function TodoMain() {
   const [todos, settodos] = useState([]) as any;
   const addNewTodo = (newTodo: any) => {
-    settodos([...todos, { id: todos.length > 0 ? todos[todos.length - 1]?.id + 1 : 1, title: newTodo, completed: false }])
+    settodos([...todos, { id: todos.length > 0 ? todos[todos.length - 1]?.id + 1 : 1, title: newTodo, completed: false, contentEditable: false }])
   }
   const ToggleTodo = (todoID: any) => {
     console.log('Toggle', todoID);
@@ -17,6 +17,18 @@ export default function TodoMain() {
   const RemoveTodo = (todoIDs: any) => {
     console.log('DelTodo', todoIDs);
     const UpdateTodo = todos.filter((todo: any) => todo.id !== todoIDs);
+    settodos(UpdateTodo);
+  }
+  const EditAble = (todoIDs: any) => {
+    const UpdateTodo = todos.map((todo: any) =>
+      todo.id === todoIDs ? { ...todo, contentEditable: true } : todo
+    )
+    settodos(UpdateTodo);
+  }
+  const EditVal = (todoIDs: any, NewVal: any) => {
+    const UpdateTodo = todos.map((todo: any) =>
+      todo.id === todoIDs ? { ...todo, title: NewVal, contentEditable: false } : todo
+    )
     settodos(UpdateTodo);
   }
   const ClearTodo = (e: any) => {
@@ -33,7 +45,7 @@ export default function TodoMain() {
     <>
       <TodoForm addNewTodo={addNewTodo} />
       <span onClick={(e) => ClearTodo(e)}>ClearAll</span>
-      <TodoList todos={todos} ToggleTodo={ToggleTodo} RemoveTodo={RemoveTodo} />
+      <TodoList todos={todos} ToggleTodo={ToggleTodo} RemoveTodo={RemoveTodo} EditAble={EditAble} EditVal={EditVal} />
     </>
   )
 }
