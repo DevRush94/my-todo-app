@@ -1,10 +1,21 @@
 body{background-color:#235852;color:#fff}
-.AppWrapper{background-color:#393939;width:500px;max-width:90%;margin:30px auto}
-.header{height:50px;line-height:50px;color:#fff;background-color:#292929;text-align:center;box-shadow:0 0 5px -1px #000;transition:.5s all ease-in-out;position:sticky;top:0;width:100%}
+form{max-width:calc(100% - 10px)}
+.AppWrapper{background-color:#393939;width:500px;max-width:90%;margin:30px auto;position:relative}
+.header{height:50px;line-height:50px;color:#fff;background-color:#292929;text-align:center;box-shadow:0 0 5px -1px #000;transition:.5s all ease-in-out;position:sticky;top:0;width:100%;z-index:2}
 .header:hover{box-shadow:0 0 0 0 #000}
-.form-list{padding:10px}
-.form-list label{display:block;margin:10px 0}
-.form-list input{margin:0;margin-right:5px}
-.CloseBtn{float:right}
-.Editing .title{display:none}
-.Editing form{display:inline-block}
+.form-list{padding:10px;min-height:30px;transition:1.2s ease-in-out}
+.form-list label{display:block;margin:10px 0;clear:both;overflow:hidden;animation:smoothIn 1.2s ease-in-out forwards}
+.form-list input{margin:0;margin-top:3px;margin-right:10px;display:inline-block;vertical-align:middle}
+.CloseBtn{display:inline-block;vertical-align:middle;width:15px;height:15px;margin-top:3px;margin-left:10px;cursor:pointer}
+.AppWrapper .Editing .title{display:none}
+.AppWrapper .Editing form{display:inline-block}
+.ClearAllBtn{position:sticky;width:100%;display:block;top:50px;float:right;background:#393939;z-index:1}
+.ClearAllBtn svg{width:20px;cursor:pointer;margin-left:auto;padding:12px}
+svg{display:block}
+.AppWrapper .title{width:calc(100% - 75px);vertical-align:middle;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+input:not([type=checkbox]){border:0;width:100%;outline:0!important;display:block;padding:2px 5px}
+.EditForm{width:calc(100% - 90px);vertical-align:middle;display:inline-block;padding-right:15px}
+@keyframes smoothIn{
+0%{opacity:0;transform:translate(0 ,-70px);height:0;font-size:0}
+100%{opacity:1;height:24px}
+}
